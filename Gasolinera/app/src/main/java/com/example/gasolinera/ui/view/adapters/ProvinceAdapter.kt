@@ -1,42 +1,26 @@
-package com.example.gasolinera.ui.view.adapters
+package com.sc89.gasolinera_manu.ui.view.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
-import com.example.gasolinera.R
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import com.example.gasolinera.data.model.ProvinceModel
-
-class ProvinceAdapter(
-    private val list: List<ProvinceModel>
-
-) : RecyclerView.Adapter<ViewHolder>() {
+import com.example.gasolinera.databinding.ItemProvinceBinding
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-       val layoutInflater = LayoutInflater.from(parent.context)
-        return ViewHolder(layoutInflater.inflate(R.layout.item_province, parent, false))
+class ProvinceAdapter: ListAdapter<ProvinceModel, ProvinceViewHolder>(DIFF_CALLBACK) {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ProvinceViewHolder (
+        ItemProvinceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    )
+
+    override fun onBindViewHolder(holder: ProvinceViewHolder, position: Int) = holder.bind(getItem(position))
+
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ProvinceModel>() {
+            override fun areItemsTheSame(oldItem: ProvinceModel, newItem: ProvinceModel): Boolean = oldItem.id == newItem.id
+            override fun areContentsTheSame(oldItem: ProvinceModel, newItem: ProvinceModel): Boolean = oldItem == newItem
+        }
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = list[position]
-        holder.bind(item)
-    }
-
-    override fun getItemCount(): Int = list.size
-
-
-}
-
-
-
-class ViewHolder(view : View): RecyclerView.ViewHolder(view) {
-
-    private val provi = view.findViewById<TextView>(R.id.tv_province)
-
-    fun bind(province : ProvinceModel){
-        provi.text = province.province
-
-    }
 }
