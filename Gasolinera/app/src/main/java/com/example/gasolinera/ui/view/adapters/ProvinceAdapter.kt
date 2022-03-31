@@ -16,7 +16,7 @@ class ProvinceAdapter: ListAdapter<ProvinceModel, ProvinceViewHolder>(DIFF_CALLB
 
     override fun onBindViewHolder(holder: ProvinceViewHolder, position: Int) = holder.bind(getItem(position))
 
-    companion object {
+    companion object { // Aqui cambio la lista en el caso de que me lo cambien
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ProvinceModel>() {
             override fun areItemsTheSame(oldItem: ProvinceModel, newItem: ProvinceModel): Boolean = oldItem.id == newItem.id
             override fun areContentsTheSame(oldItem: ProvinceModel, newItem: ProvinceModel): Boolean = oldItem == newItem

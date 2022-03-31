@@ -5,13 +5,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gasolinera.data.model.ProvinceModel
 import com.example.gasolinera.domain.GetProvinceUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ProvinceViewModel :ViewModel() {
+@HiltViewModel
+class ProvinceViewModel @Inject constructor(
+    private var getProvince : GetProvinceUseCase
+) :ViewModel() {
 
     val provinceModel = MutableLiveData<List<ProvinceModel>>()
 
-    var getProvince = GetProvinceUseCase()
+
 
     fun onCreate(){
         viewModelScope.launch {

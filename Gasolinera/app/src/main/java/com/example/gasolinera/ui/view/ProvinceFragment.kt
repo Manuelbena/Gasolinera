@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gasolinera.databinding.FragmentProvinceBinding
 import com.example.gasolinera.ui.viewmodel.ProvinceViewModel
 import com.example.gasolinera.ui.view.adapters.ProvinceAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ProvinceFragment : Fragment() {
     private var _binding: FragmentProvinceBinding? = null
     private val binding get() = _binding!!
@@ -44,7 +45,7 @@ class ProvinceFragment : Fragment() {
             rclProvinces.layoutManager = LinearLayoutManager(mContext) // <-- Aqui le pasamos el layout manager
             rclProvinces.adapter = mAdapter // <-- Seteamos el adaptador
         }
-        getAllProvinces() 
+        getAllProvinces()
     }
 
     private fun setUi() {
@@ -59,11 +60,11 @@ class ProvinceFragment : Fragment() {
     }
 
     private fun setObservers(){
-        viewModel.provinceModel.observe(this, {
-            if (!it.isNullOrEmpty()) {
+        viewModel.provinceModel.observe(this, { ListProvince ->
+            if (!ListProvince.isNullOrEmpty()) {
                 mAdapter.run { // <-- y aqui observamos los cambios
-                    submitList(it)
-                    Log.d("LOL", it.toString()) // <-- puro LOG
+                    submitList(ListProvince)
+                    Log.d("//PROVINCE//", ListProvince.toString())
                 }
             }
         })
