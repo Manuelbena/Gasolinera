@@ -1,10 +1,10 @@
 package com.example.gasolinera.data.model
 
-class ProvinceProvider {
+import javax.inject.Inject
 
-    companion object
-    {
+class ProvinceProvider @Inject constructor(){
+
        var province:List<ProvinceModel> = emptyList()
-    }
+
 
 }
