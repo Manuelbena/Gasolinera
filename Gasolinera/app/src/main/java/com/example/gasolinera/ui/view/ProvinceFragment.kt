@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gasolinera.databinding.FragmentProvinceBinding
 import com.example.gasolinera.ui.viewmodel.ProvinceViewModel
-import com.sc89.gasolinera_manu.ui.view.adapters.ProvinceAdapter
+import com.example.gasolinera.ui.view.adapters.ProvinceAdapter
 
 
 class ProvinceFragment : Fragment() {
@@ -19,8 +19,8 @@ class ProvinceFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel : ProvinceViewModel by viewModels()
     private lateinit var mContext :Context
-    private val mAdapter = ProvinceAdapter() // <-- Agregar esto
-    private fun getAllProvinces() = viewModel.onCreate() // <-- Seteamos esto por comodidad
+    private val mAdapter = ProvinceAdapter()
+    private fun getAllProvinces() = viewModel.onCreate()
 
 
     override fun onCreateView(
@@ -44,7 +44,7 @@ class ProvinceFragment : Fragment() {
             rclProvinces.layoutManager = LinearLayoutManager(mContext) // <-- Aqui le pasamos el layout manager
             rclProvinces.adapter = mAdapter // <-- Seteamos el adaptador
         }
-        getAllProvinces() // <-- llamarlo aqui
+        getAllProvinces() 
     }
 
     private fun setUi() {

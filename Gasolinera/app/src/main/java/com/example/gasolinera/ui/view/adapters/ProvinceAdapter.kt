@@ -1,4 +1,4 @@
-package com.sc89.gasolinera_manu.ui.view.adapters
+package com.example.gasolinera.ui.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
