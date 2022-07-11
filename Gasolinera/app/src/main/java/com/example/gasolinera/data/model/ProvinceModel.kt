@@ -7,3 +7,5 @@ data class ProvinceModel(
     @SerializedName("IDCCAA")val idCCAA : String,
     @SerializedName("Provincia")val province : String,
     @SerializedName("CCAA")val ccaa : String)
+
+

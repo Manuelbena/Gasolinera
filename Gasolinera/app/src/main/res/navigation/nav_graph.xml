@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/provinceFragment"
-        android:name="com.example.gasolinera.ui.view.ProvinceFragment"
+        android:name="com.example.gasolinera.ui.province.ProvinceFragment"
         android:label="fragment_province"
         tools:layout="@layout/fragment_province" />
 </navigation>
