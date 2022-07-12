@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="color_list_celda">#FEC830</color>
+    <color name="list_rcly">#344955</color>
+    <color name="tree_color">#4A6572</color>
+    <color name="grey">#C8C8C9</color>
 </resources>

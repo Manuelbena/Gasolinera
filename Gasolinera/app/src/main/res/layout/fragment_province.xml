@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.ProvinceFragment">
+    tools:context=".ui.province.ProvinceFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcl_provinces"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
+        android:visibility="visible"
         tools:listitem="@layout/item_province"/>
 
 </FrameLayout>
