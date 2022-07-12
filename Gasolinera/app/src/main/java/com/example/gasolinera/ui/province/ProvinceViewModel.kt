@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.gasolinera.common.BaseVM
 import com.example.gasolinera.data.model.ProvinceModel
 import com.example.gasolinera.domain.GetProvinceUseCase
+import com.example.gasolinera.ui.mappers.toListProvincePresentation
 import com.example.gasolinera.ui.models.ProvincePresentation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -22,10 +23,10 @@ class ProvinceViewModel @Inject constructor(
     fun provinces(){
         executeUseCase(
             {
-                GetProvinceUseCase()
+                getProvince.execute()
             },
             { provinces ->
-                val result: List<ProvincePresentation> = provinces
+                val result: List<ProvincePresentation> = provinces.toListProvincePresentation()
 
                 if (!result.isNullOrEmpty()) {
                     _event.value = ProvinceEvent.province(result)
@@ -34,18 +35,6 @@ class ProvinceViewModel @Inject constructor(
         )
     }
 
-
-
-    fun onCreate(){
-        viewModelScope.launch {
-            val result: List<ProvincePresentation> = getProvince()
-
-            if (!result.isNullOrEmpty()) {
-                provinceModel.postValue(result)
-            }
-        }
-
-    }
 
 
 }

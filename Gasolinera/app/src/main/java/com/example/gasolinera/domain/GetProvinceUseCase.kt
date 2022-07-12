@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class GetProvinceUseCase @Inject constructor(
     private val repository : ProvinceRepository
-) : BaseUseCaseNoParams<Province>{
+) : BaseUseCaseNoParams<List<Province>>(){
 
-    suspend operator fun invoke(): List<Province> = repository.getAllProvince()
+    override suspend fun execute(): List<Province> = repository.getAllProvince()
 }

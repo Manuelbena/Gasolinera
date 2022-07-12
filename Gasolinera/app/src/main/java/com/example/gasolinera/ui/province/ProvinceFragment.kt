@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gasolinera.data.model.ProvinceModel
 import com.example.gasolinera.databinding.FragmentProvinceBinding
+import com.example.gasolinera.ui.models.ProvincePresentation
 import com.example.gasolinera.ui.province.adapters.ProvinceAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,7 +26,7 @@ class ProvinceFragment : Fragment() {
     private val mAdapter = ProvinceAdapter { province -> provinceSelectedId(province) }
 
 
-    private fun getAllProvinces() = viewModel.onCreate()
+    private fun getAllProvinces() = viewModel.provinces()
 
 
     override fun onCreateView(
@@ -64,23 +65,24 @@ class ProvinceFragment : Fragment() {
     }
 
     private fun setObservers() {
-        viewModel.provinceModel.observe(this, { ListProvince ->
-            if (!ListProvince.isNullOrEmpty()) {
-                showData()
-                mAdapter.run { // <-- y aqui observamos los cambios
-                    submitList(ListProvince)
-                    Log.d("//PROVINCE//", ListProvince.toString())
+        viewModel.event.observe(viewLifecycleOwner) { result ->
+            when(result) {
+                is ProvinceEvent.province -> {
+                    if (!result.listProvince.isNullOrEmpty()) {
+                        showData()
+                        mAdapter.run { // <-- y aqui observamos los cambios
+                            submitList(result.listProvince)
+                            Log.d("//PROVINCE//", result.listProvince.toString())
 
+                        }
+                    }
                 }
-
             }
-        })
+        }
     }
+
     private fun showData(){
-
         binding.rclProvinces.isVisible = true
-
-
     }
 
     override fun onAttach(context: Context) {
@@ -89,7 +91,7 @@ class ProvinceFragment : Fragment() {
     }
 
     //Funciones
-    private fun provinceSelectedId(province: ProvinceModel) {
+    private fun provinceSelectedId(province: ProvincePresentation) {
         Toast.makeText(mContext, province.id, Toast.LENGTH_SHORT).show()
     }
 }

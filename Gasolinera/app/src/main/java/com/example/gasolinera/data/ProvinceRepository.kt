@@ -1,5 +1,6 @@
 package com.example.gasolinera.data
 
+import com.example.gasolinera.data.mappers.toListProvince
 import com.example.gasolinera.data.model.ProvinceModel
 import com.example.gasolinera.data.model.ProvinceProvider
 import com.example.gasolinera.data.network.ProvinceService
@@ -16,7 +17,7 @@ class ProvinceRepository @Inject constructor(
     {
         val response = api.getProvince()
         provinceProvider.province = response
-        return response
+        return response.toListProvince()
     }
 
 }
