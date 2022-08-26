@@ -12,15 +12,14 @@
     <stroke
         android:width="3dp"
         android:color="@color/second_color"
-        >
+       >
     </stroke>
 
 
 
     <!-- Aquí indicamos el radio a aplicar a las esquinas -->
     <corners
-        android:topLeftRadius="20dp"
-        android:topRightRadius="20dp"  >
+        android:radius="20dp"   >
     </corners>
 
 </shape>

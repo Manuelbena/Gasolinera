@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.gasolinera.common.BaseFragment
 import com.example.gasolinera.data.model.ProvinceModel
 import com.example.gasolinera.databinding.FragmentProvinceBinding
 import com.example.gasolinera.ui.models.ProvincePresentation
@@ -18,53 +19,36 @@ import com.example.gasolinera.ui.province.adapters.ProvinceAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProvinceFragment : Fragment() {
-    private var _binding: FragmentProvinceBinding? = null
-    private val binding get() = _binding!!
-    private val viewModel: ProvinceViewModel by viewModels()
+class ProvinceFragment : BaseFragment<FragmentProvinceBinding, ProvinceViewModel>(){
+
+
+    override val viewModel: ProvinceViewModel by viewModels()
     private lateinit var mContext: Context
     private val mAdapter = ProvinceAdapter { province -> provinceSelectedId(province) }
 
 
-    private fun getAllProvinces() = viewModel.provinces()
 
+    override fun inflateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    )= FragmentProvinceBinding.inflate(inflater, container, false)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentProvinceBinding.inflate(layoutInflater)
-
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ini()
-        setUi()
-        setListeners()
-        setObservers()
+        viewModel.provinces()
     }
 
-    private fun ini() {
-        binding.run {
+    override fun setUI() {
+        with(binding){
             rclProvinces.layoutManager =
                 LinearLayoutManager(mContext) // <-- Aqui le pasamos el layout manager
             rclProvinces.adapter = mAdapter // <-- Seteamos el adaptador
         }
-        getAllProvinces()
-    }
-
-    private fun setUi() {
-
 
     }
 
-    private fun setListeners() {
-
-    }
-
-    private fun setObservers() {
+    override fun observe() {
         viewModel.event.observe(viewLifecycleOwner) { result ->
             when(result) {
                 is ProvinceEvent.province -> {
@@ -81,17 +65,21 @@ class ProvinceFragment : Fragment() {
         }
     }
 
-    private fun showData(){
-        binding.rclProvinces.isVisible = true
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mContext = context
     }
 
-    //Funciones
+
+    /**
+     * FUNCIONES
+     */
     private fun provinceSelectedId(province: ProvincePresentation) {
         Toast.makeText(mContext, province.id, Toast.LENGTH_SHORT).show()
     }
+    private fun showData(){
+        binding.rclProvinces.isVisible = true
+    }
+
+
 }
