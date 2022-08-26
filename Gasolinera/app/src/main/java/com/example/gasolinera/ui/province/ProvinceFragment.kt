@@ -19,7 +19,7 @@ import com.example.gasolinera.ui.province.adapters.ProvinceAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProvinceFragment : BaseFragment<FragmentProvinceBinding, ProvinceViewModel>(){
+class ProvinceFragment : BaseFragment<FragmentProvinceBinding, ProvinceViewModel>() {
 
 
     override val viewModel: ProvinceViewModel by viewModels()
@@ -27,11 +27,10 @@ class ProvinceFragment : BaseFragment<FragmentProvinceBinding, ProvinceViewModel
     private val mAdapter = ProvinceAdapter { province -> provinceSelectedId(province) }
 
 
-
     override fun inflateView(
         inflater: LayoutInflater,
         container: ViewGroup?
-    )= FragmentProvinceBinding.inflate(inflater, container, false)
+    ) = FragmentProvinceBinding.inflate(inflater, container, false)
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,7 +39,7 @@ class ProvinceFragment : BaseFragment<FragmentProvinceBinding, ProvinceViewModel
     }
 
     override fun setUI() {
-        with(binding){
+        with(binding) {
             rclProvinces.layoutManager =
                 LinearLayoutManager(mContext) // <-- Aqui le pasamos el layout manager
             rclProvinces.adapter = mAdapter // <-- Seteamos el adaptador
@@ -50,7 +49,7 @@ class ProvinceFragment : BaseFragment<FragmentProvinceBinding, ProvinceViewModel
 
     override fun observe() {
         viewModel.event.observe(viewLifecycleOwner) { result ->
-            when(result) {
+            when (result) {
                 is ProvinceEvent.province -> {
                     if (!result.listProvince.isNullOrEmpty()) {
                         showData()
@@ -74,10 +73,12 @@ class ProvinceFragment : BaseFragment<FragmentProvinceBinding, ProvinceViewModel
     /**
      * FUNCIONES
      */
+    
     private fun provinceSelectedId(province: ProvincePresentation) {
         Toast.makeText(mContext, province.id, Toast.LENGTH_SHORT).show()
     }
-    private fun showData(){
+
+    private fun showData() {
         binding.rclProvinces.isVisible = true
     }
 
