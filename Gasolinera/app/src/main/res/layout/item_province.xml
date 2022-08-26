@@ -7,9 +7,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:backgroundTint="@color/color_list_celda"
     app:cardCornerRadius="15dp"
-    app:cardElevation="4dp"
+    app:cardElevation="10dp"
     app:cardBackgroundColor="@color/tree_color"
     android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginEnd="25dp"
+    android:layout_marginStart="25dp"
     >
     <TextView
         android:id="@+id/tv_province"
@@ -18,11 +21,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_margin="20dp"
+        android:textStyle="bold"
+        android:layout_margin="10dp"
         android:gravity="center"
         android:text="@string/text"
         android:textSize="18sp"
-        android:fontFamily="@font/inter"
+        android:fontFamily="@font/"
 
 
         />

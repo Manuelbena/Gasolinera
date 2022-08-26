@@ -9,5 +9,14 @@
         android:id="@+id/provinceFragment"
         android:name="com.example.gasolinera.ui.province.ProvinceFragment"
         android:label="fragment_province"
-        tools:layout="@layout/fragment_province" />
+        tools:layout="@layout/fragment_province" >
+        <action
+            android:id="@+id/action_provinceFragment_to_municipalityFragment"
+            app:destination="@id/municipalityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/municipalityFragment"
+        android:name="com.example.gasolinera.ui.municipality.municipalityFragment"
+        android:label="fragment_municipality"
+        tools:layout="@layout/fragment_municipality" />
 </navigation>
