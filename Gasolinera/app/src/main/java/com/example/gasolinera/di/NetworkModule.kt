@@ -1,6 +1,6 @@
 package com.example.gasolinera.di
 
-import com.example.gasolinera.data.network.ProviceApiClient
+import com.example.gasolinera.data.network.GasolineApiClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,8 +26,8 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideProviceApiClient(retrofit: Retrofit): ProviceApiClient {
-        return retrofit.create(ProviceApiClient::class.java)
+    fun provideProviceApiClient(retrofit: Retrofit): GasolineApiClient {
+        return retrofit.create(GasolineApiClient::class.java)
 
     }
 }

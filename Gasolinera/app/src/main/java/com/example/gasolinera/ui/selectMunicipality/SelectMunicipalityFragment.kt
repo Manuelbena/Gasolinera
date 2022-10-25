@@ -1,9 +1,8 @@
-package com.example.gasolinera.ui.province
+package com.example.gasolinera.ui.selectMunicipality
 
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,19 +11,18 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gasolinera.common.BaseFragment
-import com.example.gasolinera.data.model.ProvinceModel
 import com.example.gasolinera.databinding.FragmentProvinceBinding
 import com.example.gasolinera.ui.models.ProvincePresentation
-import com.example.gasolinera.ui.province.adapters.ProvinceAdapter
+import com.example.gasolinera.ui.selectMunicipality.adapters.SelectMunicipalityAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProvinceFragment : BaseFragment<FragmentProvinceBinding, ProvinceViewModel>() {
+class SelectMunicipalityFragment : BaseFragment<FragmentProvinceBinding, SelectMunicipalityViewModel>() {
 
 
-    override val viewModel: ProvinceViewModel by viewModels()
+    override val viewModel: SelectMunicipalityViewModel by viewModels()
     private lateinit var mContext: Context
-    private val mAdapter = ProvinceAdapter { province -> provinceSelectedId(province) }
+    private val mAdapter = SelectMunicipalityAdapter { province -> provinceSelectedId(province) }
 
 
     override fun inflateView(
@@ -50,7 +48,7 @@ class ProvinceFragment : BaseFragment<FragmentProvinceBinding, ProvinceViewModel
     override fun observe() {
         viewModel.event.observe(viewLifecycleOwner) { result ->
             when (result) {
-                is ProvinceEvent.province -> {
+                is SelectMunicipalityEvent.province -> {
                     if (!result.listProvince.isNullOrEmpty()) {
                         showData()
                         mAdapter.run { // <-- y aqui observamos los cambios

@@ -4,7 +4,7 @@ import javax.inject.Inject
 
 class ProvinceProvider @Inject constructor(){
 
-       var province:List<ProvinceModel> = emptyList()
+       var province:List<ProvinceModelData> = emptyList()
 
 
 }

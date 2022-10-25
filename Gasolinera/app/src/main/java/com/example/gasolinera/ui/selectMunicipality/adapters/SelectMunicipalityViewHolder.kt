@@ -1,14 +1,13 @@
-package com.example.gasolinera.ui.province.adapters
+package com.example.gasolinera.ui.selectMunicipality.adapters
 
 import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gasolinera.R
-import com.example.gasolinera.data.model.ProvinceModel
 import com.example.gasolinera.databinding.ItemProvinceBinding
 import com.example.gasolinera.ui.models.ProvincePresentation
 
 
-class ProvinceViewHolder(
+class SelectMunicipalityViewHolder(
     private val binding: ItemProvinceBinding
 ): RecyclerView.ViewHolder(binding.root) {
     fun bind(provinceModel: ProvincePresentation, onClickListener:(ProvincePresentation)->Unit) {
