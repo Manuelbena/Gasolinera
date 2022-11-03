@@ -1,4 +1,4 @@
-package com.example.gasolinera.ui.province
+package com.example.gasolinera.ui
 
 import android.os.BaseBundle
 import androidx.appcompat.app.AppCompatActivity

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/primary_color"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.province.ProvinceFragment">
+    tools:context=".ui.selectMunicipality.SelectMunicipalityFragment">
 
     <TextView
         android:layout_width="wrap_content"

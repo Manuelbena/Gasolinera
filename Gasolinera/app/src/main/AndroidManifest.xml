@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gasolinera">
         <activity
-            android:name="com.example.gasolinera.ui.province.MainActivity"
+            android:name="com.example.gasolinera.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

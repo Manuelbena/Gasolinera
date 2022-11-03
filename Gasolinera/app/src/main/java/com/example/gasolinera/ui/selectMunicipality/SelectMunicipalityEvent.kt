@@ -1,10 +1,10 @@
-package com.example.gasolinera.ui.province
+package com.example.gasolinera.ui.selectMunicipality
 
 import com.example.gasolinera.ui.models.ProvincePresentation
 
-sealed class ProvinceEvent {
+sealed class SelectMunicipalityEvent {
 
     class province(
         val listProvince : List<ProvincePresentation>
-    ): ProvinceEvent()
+    ): SelectMunicipalityEvent()
 }
